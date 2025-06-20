@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -5,7 +6,7 @@ public class Main {
     public static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
-        showSelectedCandidates();
+        tryingCallCandidate();
     }
 
     public static void salaryAnalyze(double desiredSalary) {
@@ -59,6 +60,30 @@ public class Main {
         String[] candidates = {"Felipe", "Marcia", "Julia", "Paulo", "Augusto"};
         for(int i = 0; i < candidates.length; i++) {
             System.out.printf("Candidado: %s | Indice: %s\n", candidates[i], i+1);
+        }
+    }
+
+    public static boolean answerCall() {
+        return new Random().nextInt(3) == 1;
+    }
+
+    public static void tryingCallCandidate() {
+        System.out.println("\n--- Tentando Ligar para Candidatos (max: 3) ---\n");
+        String[] candidates = {"Felipe", "Marcia", "Julia", "Paulo", "Augusto"};
+
+        for(String candidate: candidates) {
+            int callAttempts = 0;
+            while (callAttempts < 3) {
+                if(answerCall()) {
+                    System.out.printf("%s atendeu a ligação na %s° tentativa.\n", candidate, callAttempts+1);
+                    break;
+                } else {
+                    callAttempts++;
+                    if (callAttempts == 3) {
+                       System.out.printf("%s não respondeu as ligações.\n", candidate);
+                    }
+                }
+            }
         }
     }
 }
