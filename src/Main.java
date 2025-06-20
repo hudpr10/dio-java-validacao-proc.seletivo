@@ -5,7 +5,7 @@ public class Main {
     public static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
-        candidateSelection();
+        showSelectedCandidates();
     }
 
     public static void salaryAnalyze(double desiredSalary) {
@@ -51,5 +51,14 @@ public class Main {
         }
 
         System.out.println("\nTotal de candidatos selecionados: " + selectedCandidates);
+    }
+
+    public static void showSelectedCandidates() {
+        System.out.println("--- Canditados Selecionados ---");
+
+        String[] candidates = {"Felipe", "Marcia", "Julia", "Paulo", "Augusto"};
+        for(int i = 0; i < candidates.length; i++) {
+            System.out.printf("Candidado: %s | Indice: %s\n", candidates[i], i+1);
+        }
     }
 }
